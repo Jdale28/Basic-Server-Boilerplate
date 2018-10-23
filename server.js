@@ -89,6 +89,8 @@ const Store = new Schema ({
         }
     ]
 })
+
+module.exports = mongoose.model('Store', Store)
 // End of store model "boilerplate"
 
 
@@ -101,6 +103,8 @@ const Product = new Schema ({
     name: String,
     proce: Number,
 })
+
+module.exports = mongoose.model('Product', Product)
 // end of product.js "boilerplate"
 // end of Model folder "boilerplate"
 
@@ -130,6 +134,7 @@ const kroger = new Store({
     products: [apple, bread]
 })
 
+// This clears your database of extraneous information prior to seeding your database
 Store.remove({})
     .then(() => Product.insertMany([apple, bread]))
     .then(() => kroger.save())
